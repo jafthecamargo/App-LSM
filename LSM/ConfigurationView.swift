@@ -20,6 +20,16 @@ struct ConfigurationView: View {
         NavigationView {
             VStack {
                 Form {
+                    Section("GENERAL") {
+                        HStack {
+                            Link("Configuración del sistema", destination: URL(string: UIApplication.openSettingsURLString)!)
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                            Spacer()
+                            Image(systemName: "gearshape.fill")
+                                .foregroundColor(Color.accentColor)
+                        }
+                    }
+                    
                     Section(header: Text("APOYOS"), footer: Text("Si te gusta nuestro proyecto, puedes ayudarnos a financiar el desarrollo")) {
                         Button(action: {
                             donar = true
@@ -32,17 +42,27 @@ struct ConfigurationView: View {
                             }
                         }
                     }
-                    Section(header: Text("ACERCA DE"), footer: Text("© 2023 LSM Todos los derechos reservados")
+                    
+                    Section(header: Text("INFORMACIÓN"), footer: Text("Versión Alpha - v0.1a")
                         .frame(maxWidth: .infinity)
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)) {
                         HStack {
-                            Link("Configuración del sistema", destination: URL(string: UIApplication.openSettingsURLString)!)
+                            Link("Califica a LSM", destination: URL(string: "itms-apps://itunes.apple.com/app/id1570543920?action=write-review")!)
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                             Spacer()
-                            Image(systemName: "gearshape.fill")
+                            Image(systemName: "star.fill")
                                 .foregroundColor(Color.accentColor)
                         }
+                            
+                        HStack {
+                            Link("Contribuye con la traducción", destination: URL(string: "https://aged-court-904.notion.site/LSM-420d2a90603d4839962cdb37e3e34bf0")!)
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                            Spacer()
+                            Image(systemName: "quote.closing")
+                                .foregroundColor(Color.accentColor)
+                        }
+                             
                         Button(action: {
                             email.send(openURL: openURL)
                         }) {
@@ -50,23 +70,12 @@ struct ConfigurationView: View {
                                 Text("Comentarios")
                                     .foregroundColor(colorScheme == .dark ? .white : .black)
                                 Spacer()
-                                Image(systemName: "quote.bubble.fill")
+                                Text("info@lsm.com")
                             }
                         }
-                        HStack {
-                            Link("Califícanos en la App Store", destination: URL(string: "itms-apps://itunes.apple.com/app/id1570543920?action=write-review")!)
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
-                            Spacer()
-                            Image(systemName: "star.fill")
-                                .foregroundColor(Color.accentColor)
-                            }
+                            
                         NavigationLink(destination: Creditos().navigationBarTitleDisplayMode(.inline)) {
-                            HStack {
-                                Text("Créditos")
-                            }
-                        }
-                        HStack {
-                            Link("Contribuye con la traducción", destination: URL(string: "https://aged-court-904.notion.site/LSM-420d2a90603d4839962cdb37e3e34bf0")!)
+                            Text("Créditos")
                         }
                     }
                 }
@@ -77,10 +86,13 @@ struct ConfigurationView: View {
                 }
             }
             .navigationTitle("Configuración")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Text("Cerrar")
-                        .foregroundColor(Color.accentColor)
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(Color.gray)
+                        .fontWeight(.medium)
+                        .padding(.vertical)
                         .onTapGesture {
                             config = false
                         }

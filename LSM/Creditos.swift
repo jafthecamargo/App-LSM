@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct Creditos: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
+        
         VStack {
             Form {
                 Section("DIRECTORES") {
@@ -25,34 +29,34 @@ struct Creditos: View {
                             .foregroundColor(Color.accentColor)
                     }
                 }
-                Section("ALUMNOS") {
+                Section("ALUMNO") {
                     HStack {
                         Text("Jafthe Camargo")
                         Spacer()
                         Text("Programador")
                             .foregroundColor(Color.accentColor)
                     }
-                    HStack {
-                        Text("")
-                        Spacer()
-                        Text("")
-                            .foregroundColor(Color.accentColor)
-                    }
-                    HStack {
-                        Text("")
-                        Spacer()
-                        Text("")
-                            .foregroundColor(Color.accentColor)
-                    }
+                    Text("")
+                    Text("")
                 }
-                Section(header: Text("NOS AYUDAN A TRADUCIR"), footer: Text("Versión Alpha - v0.1a")
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 20)){
+                Section("NOS AYUDAN A TRADUCIR") {
                     Text("")
                     Text("")
                     Text("")
                 }
+            }
+        }
+        .navigationTitle("Créditos")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(Color.gray)
+                    .fontWeight(.semibold)
+                    .onTapGesture {
+                        presentationMode.wrappedValue.dismiss()
+                    }
             }
         }
     }

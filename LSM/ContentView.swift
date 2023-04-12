@@ -23,6 +23,7 @@ struct ContentView: View {
         .sheet(isPresented: $menu) {
             Menu()
                 .presentationDetents([.fraction(2/8), .large])
+                .presentationCornerRadius(20)
                 .interactiveDismissDisabled()
         }
         .onAppear {

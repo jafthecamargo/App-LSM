@@ -10,6 +10,7 @@ import SwiftUI
 struct Menu: View {
     
     @Environment(\.colorScheme) var colorScheme
+    
     @State private var config = false
     @State private var info = false
     
@@ -38,14 +39,16 @@ struct Menu: View {
                 Button(action: {
                     self.info.toggle()
                 }) {
-                    Image(systemName: "info.circle")
+                    Image(systemName: "questionmark.circle")
                         .resizable()
                         .frame(width: 30, height: 30)
+                        .fontWeight(.regular)
                         .foregroundColor(Color.accentColor)
                 }
                 .sheet(isPresented: $info) {
                     Info(info: $info)
-                        .presentationDetents([.medium])
+                        .presentationDetents([.fraction(7/8)])
+                        .presentationCornerRadius(20)
                 }
                 Spacer()
                 Button(action: {
@@ -54,11 +57,13 @@ struct Menu: View {
                     Image(systemName: "gear")
                         .resizable()
                         .frame(width: 30, height: 30)
+                        .fontWeight(.regular)
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
                 .sheet(isPresented: $config) {
                     ConfigurationView(config: $config)
                         .presentationDetents([.fraction(6/8)])
+                        .presentationCornerRadius(20)
                 }
             }
             .padding(.horizontal, 40)
