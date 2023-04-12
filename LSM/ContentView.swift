@@ -10,24 +10,31 @@ import AVFoundation
 
 struct ContentView: View {
     
-    @State private var menu = false
-    
-    @State private var capturedImage: UIImage? = nil
-    @State private var isCustomCameraViewPresenteed = false
+    @State private var menu = true
+    @State private var showText = false
+    @State private var isAnimating = false
     
     var body: some View {
-        VStack {
+        ZStack {
             CustomCameraView()
+            
+            VStack {
+                Text("Apunte el teléfono hacia la persona")
+                    .font(.headline)
+            }
+            .padding(.vertical, 10)
+            .padding(.horizontal, 20)
+            .font(.system(size: 15))
+            .foregroundColor(Color.white)
+            .background(.ultraThinMaterial)
+            .cornerRadius(20)
         }
         .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $menu) {
             Menu()
-                .presentationDetents([.fraction(2/8), .large])
+                .presentationDetents([.fraction(2/8), .medium])
                 .presentationCornerRadius(20)
                 .interactiveDismissDisabled()
-        }
-        .onAppear {
-            menu = true
         }
     }
 }

@@ -11,6 +11,7 @@ struct ConfigurationView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) var openURL
+    
     @Binding var config: Bool
     
     @State private var donar = false
@@ -19,7 +20,7 @@ struct ConfigurationView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Form {
+                List {
                     Section("GENERAL") {
                         HStack {
                             Link("Configuración del sistema", destination: URL(string: UIApplication.openSettingsURLString)!)
@@ -47,57 +48,47 @@ struct ConfigurationView: View {
                         .frame(maxWidth: .infinity)
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)) {
-                        HStack {
-                            Link("Califica a LSM", destination: URL(string: "itms-apps://itunes.apple.com/app/id1570543920?action=write-review")!)
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
-                            Spacer()
-                            Image(systemName: "star.fill")
-                                .foregroundColor(Color.accentColor)
-                        }
-                            
-                        HStack {
-                            Link("Contribuye con la traducción", destination: URL(string: "https://aged-court-904.notion.site/LSM-420d2a90603d4839962cdb37e3e34bf0")!)
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
-                            Spacer()
-                            Image(systemName: "quote.closing")
-                                .foregroundColor(Color.accentColor)
-                        }
-                             
-                        Button(action: {
-                            email.send(openURL: openURL)
-                        }) {
                             HStack {
-                                Text("Comentarios")
+                                Link("Califica a LSM", destination: URL(string: "itms-apps://itunes.apple.com/app/id1570543920?action=write-review")!)
                                     .foregroundColor(colorScheme == .dark ? .white : .black)
                                 Spacer()
-                                Text("info@lsm.com")
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(Color.accentColor)
+                            }
+                            
+                            HStack {
+                                Link("Contribuye con la traducción", destination: URL(string: "https://aged-court-904.notion.site/LSM-420d2a90603d4839962cdb37e3e34bf0")!)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                                Spacer()
+                                Image(systemName: "quote.closing")
+                                    .foregroundColor(Color.accentColor)
+                            }
+                            
+                            Button(action: {
+                                email.send(openURL: openURL)
+                            }) {
+                                HStack {
+                                    Text("Comentarios")
+                                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                                    Spacer()
+                                    Text("info@lsm.com")
+                                }
+                            }
+                            
+                            NavigationLink(destination: Creditos().navigationBarTitleDisplayMode(.inline)) {
+                                Text("Créditos")
                             }
                         }
-                            
-                        NavigationLink(destination: Creditos().navigationBarTitleDisplayMode(.inline)) {
-                            Text("Créditos")
-                        }
-                    }
                 }
                 .alert(isPresented: $donar) {
-                    Alert(title: Text("Donar"), message: Text("¿Estás seguro de que deseas realizar una donación?"), primaryButton: .destructive(Text("Sí"), action: {
-                        // Realizar la acción de la donación
-                    }), secondaryButton: .cancel(Text("No")))
+                    Alert(title: Text("Donar"), message: Text("¿Estás seguro de que deseas realizar una donación?"), primaryButton: .destructive(Text("No")), secondaryButton: .default(Text("Si"), action: {
+                            print("Donar")
+                        })
+                    )
                 }
             }
             .navigationTitle("Configuración")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Image(systemName: "chevron.down")
-                        .foregroundColor(Color.gray)
-                        .fontWeight(.medium)
-                        .padding(.vertical)
-                        .onTapGesture {
-                            config = false
-                        }
-                }
-            }
         }
     }
 }

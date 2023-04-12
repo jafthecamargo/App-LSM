@@ -9,8 +9,6 @@ import SwiftUI
 
 struct Creditos: View {
     
-    @Environment(\.presentationMode) var presentationMode
-    
     var body: some View {
         
         VStack {
@@ -46,24 +44,5 @@ struct Creditos: View {
                 }
             }
         }
-        .navigationTitle("Créditos")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading) {
-                Image(systemName: "chevron.backward")
-                    .foregroundColor(Color.gray)
-                    .fontWeight(.semibold)
-                    .onTapGesture {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-            }
-        }
-    }
-}
-
-struct Creditos_Previews: PreviewProvider {
-    static var previews: some View {
-        Creditos()
     }
 }

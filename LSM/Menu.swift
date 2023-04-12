@@ -14,66 +14,73 @@ struct Menu: View {
     @State private var config = false
     @State private var info = false
     
-    @State var textArray = ["Hola", "Como estás", "Me llamo", "M-A-F-E-R", "Mucho gusto"]
+    @State var textArray = ["hola", "como", "estás", "mi", "nombre", "m", "a", "f", "e", "r", "mucho", "gusto", "conocerte", "características"]
     @State var textIndex = 0
     @State private var selectedColorIndex = 0
     
     var body: some View {
         VStack {
-            
             Spacer()
             
             Text(textArray[textIndex])
                 .foregroundColor(colorScheme == .dark ? Color.white.opacity(0.9) : Color.black.opacity(0.9))
-                .font(.system(size: 30, weight: .bold))
+                .font(.system(size: 45, weight: .bold))
                 .opacity(0.9)
-                .padding(.horizontal, 50)
-                .padding(.vertical, 40)
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
                 .multilineTextAlignment(.center)
-                .lineSpacing(30)
-                .lineLimit(1)
+                .lineSpacing(10)
             
             Spacer()
                 
             HStack {
-                Button(action: {
-                    self.info.toggle()
-                }) {
+                VStack {
                     Image(systemName: "questionmark.circle")
                         .resizable()
                         .frame(width: 30, height: 30)
-                        .fontWeight(.regular)
                         .foregroundColor(Color.accentColor)
+                        .fontWeight(.regular)
+                        .onTapGesture {
+                            info = true
+                        }
+                        .sheet(isPresented: $info) {
+                            Info(info: $info)
+                                .presentationDetents([.medium])
+                                .presentationCornerRadius(20)
+                        }
                 }
-                .sheet(isPresented: $info) {
-                    Info(info: $info)
-                        .presentationDetents([.fraction(7/8)])
-                        .presentationCornerRadius(20)
-                }
+                .padding(.vertical, 15)
+                .padding(.horizontal, 15)
+                .background(.ultraThickMaterial)
+                .cornerRadius(50)
+                
                 Spacer()
-                Button(action: {
-                    self.config.toggle()
-                }) {
+                
+                VStack {
                     Image(systemName: "gear")
                         .resizable()
                         .frame(width: 30, height: 30)
-                        .fontWeight(.regular)
                         .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .fontWeight(.regular)
+                        .onTapGesture {
+                            config = true
+                        }
+                        .sheet(isPresented: $config) {
+                            ConfigurationView(config: $config)
+                                .presentationDetents([.fraction(6/8)])
+                                .presentationCornerRadius(20)
+                        }
                 }
-                .sheet(isPresented: $config) {
-                    ConfigurationView(config: $config)
-                        .presentationDetents([.fraction(6/8)])
-                        .presentationCornerRadius(20)
-                }
+                .padding(.vertical, 15)
+                .padding(.horizontal, 15)
+                .background(.ultraThickMaterial)
+                .cornerRadius(50)
             }
-            .padding(.horizontal, 40)
-            .padding(.bottom, 10)
         }
+        .padding(.horizontal, 30)
         .onAppear {
-            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
-                withAnimation(.easeOut(duration: 0.5)) {
-                    self.textIndex = (self.textIndex + 1) % self.textArray.count
-                }
+            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { timer in
+                self.textIndex = (self.textIndex + 1) % self.textArray.count
             }
         }
     }
