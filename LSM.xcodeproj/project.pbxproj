@@ -19,7 +19,6 @@
 		EC6F072C29DFC8F000A8C573 /* LSMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F072B29DFC8F000A8C573 /* LSMTests.swift */; };
 		EC6F073629DFC8F100A8C573 /* LSMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F073529DFC8F100A8C573 /* LSMUITests.swift */; };
 		EC6F073829DFC8F100A8C573 /* LSMUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F073729DFC8F100A8C573 /* LSMUITestsLaunchTests.swift */; };
-		EC71ABEA29E3AA0000DC39DF /* Creditos.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71ABE929E3AA0000DC39DF /* Creditos.swift */; };
 		EC83596329E478E700B09C8E /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC83596229E478E700B09C8E /* SupportEmail.swift */; };
 		EC83596529E4860600B09C8E /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC83596429E4860600B09C8E /* Menu.swift */; };
 		EC8EFAC829E4DBBE00EEBCE1 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8EFAC729E4DBBE00EEBCE1 /* Info.swift */; };
@@ -59,7 +58,6 @@
 		EC6F073129DFC8F000A8C573 /* LSMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LSMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6F073529DFC8F100A8C573 /* LSMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSMUITests.swift; sourceTree = "<group>"; };
 		EC6F073729DFC8F100A8C573 /* LSMUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSMUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		EC71ABE929E3AA0000DC39DF /* Creditos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creditos.swift; sourceTree = "<group>"; };
 		EC83596229E478E700B09C8E /* SupportEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
 		EC83596429E4860600B09C8E /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		EC8EFAC729E4DBBE00EEBCE1 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 				EC4EE34F29E0939A0067D651 /* CameraView.swift */,
 				EC4EE35129E097DE0067D651 /* CustomCameraView.swift */,
 				EC63889129E10EF8002E11C6 /* ConfigurationView.swift */,
-				EC71ABE929E3AA0000DC39DF /* Creditos.swift */,
 				EC83596229E478E700B09C8E /* SupportEmail.swift */,
 				EC83596429E4860600B09C8E /* Menu.swift */,
 				EC8EFAC729E4DBBE00EEBCE1 /* Info.swift */,
@@ -290,7 +287,6 @@
 				EC63889229E10EF8002E11C6 /* ConfigurationView.swift in Sources */,
 				EC83596329E478E700B09C8E /* SupportEmail.swift in Sources */,
 				EC8EFAC829E4DBBE00EEBCE1 /* Info.swift in Sources */,
-				EC71ABEA29E3AA0000DC39DF /* Creditos.swift in Sources */,
 				EC6F071A29DFC8E800A8C573 /* LSMApp.swift in Sources */,
 				EC4EE35229E097DE0067D651 /* CustomCameraView.swift in Sources */,
 				EC83596529E4860600B09C8E /* Menu.swift in Sources */,
