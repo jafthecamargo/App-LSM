@@ -11,6 +11,7 @@ import UIKit
 struct Info: View {
     
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.presentationMode) var presentationMode
     
     @Binding var info: Bool
     
@@ -24,9 +25,18 @@ struct Info: View {
             }
             .navigationTitle("Información")
             .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Text("Cerrar")
+                        .padding(.vertical)
+                        .foregroundColor(Color.accentColor)
+                        .onTapGesture {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Link(destination: URL(string: "https://www.gob.mx/conadis/articulos/lengua-de-senas-mexicana-lsm?idiom=es")!, label: {
-                        Text("gob.mx")
+                        Image(systemName: "globe")
+                            .padding(.vertical)
                     })
                 }
             }

@@ -32,7 +32,7 @@ struct ContentView: View {
         .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $menu) {
             Menu()
-                .presentationDetents([.fraction(2/8), .medium])
+                .presentationDetents([.fraction(2/8)])
                 .presentationCornerRadius(20)
                 .interactiveDismissDisabled()
         }

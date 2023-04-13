@@ -1,17 +1,35 @@
 //
-//  Creditos.swift
+//  AcercaDe.swift
 //  LSM
 //
-//  Created by Jafthe Jethro Camargo Pulgarin on 09/04/23.
+//  Created by Jafthe Jethro Camargo Pulgarin on 13/04/23.
 //
 
 import SwiftUI
 
-struct Creditos: View {
+struct AcercaDe: View {
     
     var body: some View {
         VStack {
             Form {
+                Section {
+                    Image("IMG_1077")
+                        .resizable()
+                        .frame(width: 140, height: 140)
+                        .cornerRadius(30)
+                    Text("LSM")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .padding(.bottom, -10)
+                    Text("Versión Alpha - v0.1a")
+                        .font(.callout)
+                        .foregroundColor(Color.gray)
+                        .padding(.top, -15)
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .listRowBackground(Color.clear)
+                .listRowSeparator(Visibility.hidden)
+                
                 Section("DIRECTORES") {
                     HStack {
                         Text("")
@@ -26,6 +44,7 @@ struct Creditos: View {
                             .foregroundColor(Color.accentColor)
                     }
                 }
+                .padding(.top, -10)
                 Section("ALUMNO") {
                     HStack {
                         Text("Jafthe Camargo")
@@ -43,7 +62,7 @@ struct Creditos: View {
                 }
             }
         }
-        .navigationTitle("Créditos")
+        .navigationTitle("Acerca de")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

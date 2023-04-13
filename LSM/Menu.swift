@@ -39,7 +39,6 @@ struct Menu: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundColor(Color.accentColor)
-                        .fontWeight(.regular)
                         .onTapGesture {
                             info = true
                         }
@@ -61,13 +60,12 @@ struct Menu: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .fontWeight(.regular)
                         .onTapGesture {
                             config = true
                         }
                         .sheet(isPresented: $config) {
                             ConfigurationView(config: $config)
-                                .presentationDetents([.fraction(6/8)])
+                                .presentationDetents([.large])
                                 .presentationCornerRadius(20)
                         }
                 }

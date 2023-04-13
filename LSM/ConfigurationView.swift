@@ -11,9 +11,10 @@ struct ConfigurationView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) var openURL
+    @Environment(\.presentationMode) var presentationMode
     
     @Binding var config: Bool
-    
+  
     @State private var donar = false
     @State private var email = SupportEmail(toAddress: "jethro_ocelotl2001@hotmail.com", subject: "Comentario", messageHeader: "")
     
@@ -75,8 +76,8 @@ struct ConfigurationView: View {
                                 }
                             }
                             
-                            NavigationLink(destination: Creditos().navigationBarTitleDisplayMode(.inline)) {
-                                Text("Créditos")
+                            NavigationLink(destination: AcercaDe()) {
+                                Text("Acerca de")
                             }
                         }
                 }
@@ -87,8 +88,18 @@ struct ConfigurationView: View {
                     )
                 }
             }
-            .navigationTitle("Configuración")
+            .navigationTitle("Ajustes")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Text("Cerrar")
+                        .padding(.vertical)
+                        .foregroundColor(Color.accentColor)
+                        .onTapGesture {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                }
+            }
         }
     }
 }

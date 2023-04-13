@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC3C97A729E872160068437F /* AcercaDe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C97A629E872160068437F /* AcercaDe.swift */; };
 		EC4EE34E29E08F920067D651 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EE34D29E08F920067D651 /* CameraService.swift */; };
 		EC4EE35029E0939A0067D651 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EE34F29E0939A0067D651 /* CameraView.swift */; };
 		EC4EE35229E097DE0067D651 /* CustomCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EE35129E097DE0067D651 /* CustomCameraView.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC3C97A629E872160068437F /* AcercaDe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcercaDe.swift; sourceTree = "<group>"; };
 		EC4EE34D29E08F920067D651 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
 		EC4EE34F29E0939A0067D651 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		EC4EE35129E097DE0067D651 /* CustomCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCameraView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				EC83596229E478E700B09C8E /* SupportEmail.swift */,
 				EC83596429E4860600B09C8E /* Menu.swift */,
 				EC8EFAC729E4DBBE00EEBCE1 /* Info.swift */,
+				EC3C97A629E872160068437F /* AcercaDe.swift */,
 			);
 			path = LSM;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				EC4EE35229E097DE0067D651 /* CustomCameraView.swift in Sources */,
 				EC83596529E4860600B09C8E /* Menu.swift in Sources */,
 				EC4EE34E29E08F920067D651 /* CameraService.swift in Sources */,
+				EC3C97A729E872160068437F /* AcercaDe.swift in Sources */,
 				EC4EE35029E0939A0067D651 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
