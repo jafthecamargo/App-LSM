@@ -9,11 +9,15 @@ import SwiftUI
 
 struct AcercaDe: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
+    @Binding var config: Bool
+    
     var body: some View {
         VStack {
             Form {
                 Section {
-                    Image("IMG_1077")
+                    Image("LSM")
                         .resizable()
                         .frame(width: 140, height: 140)
                         .cornerRadius(30)
@@ -45,6 +49,7 @@ struct AcercaDe: View {
                     }
                 }
                 .padding(.top, -10)
+                
                 Section("ALUMNO") {
                     HStack {
                         Text("Jafthe Camargo")
@@ -52,8 +57,6 @@ struct AcercaDe: View {
                         Text("Programador")
                             .foregroundColor(Color.accentColor)
                     }
-                    Text("")
-                    Text("")
                 }
                 Section("NOS AYUDAN A TRADUCIR") {
                     Text("")

@@ -17,6 +17,7 @@ struct ConfigurationView: View {
   
     @State private var donar = false
     @State private var email = SupportEmail(toAddress: "jethro_ocelotl2001@hotmail.com", subject: "Comentario", messageHeader: "")
+    @State private var isShowingTraduccionView = false
     
     var body: some View {
         NavigationView {
@@ -57,12 +58,20 @@ struct ConfigurationView: View {
                                     .foregroundColor(Color.accentColor)
                             }
                             
-                            HStack {
-                                Link("Contribuye con la traducción", destination: URL(string: "https://aged-court-904.notion.site/LSM-420d2a90603d4839962cdb37e3e34bf0")!)
-                                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                                Spacer()
-                                Image(systemName: "quote.closing")
-                                    .foregroundColor(Color.accentColor)
+                            Button(action: {
+                                isShowingTraduccionView = true
+                            }) {
+                                HStack {
+                                    Text("Contribuye con la traducción")
+                                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                                    Spacer()
+                                    Image(systemName: "quote.closing")
+                                        .foregroundColor(Color.accentColor)
+                                }
+                            }
+                            .fullScreenCover(isPresented: $isShowingTraduccionView) {
+                                SafariView(url: URL(string: "https://aged-court-904.notion.site/LSM-420d2a90603d4839962cdb37e3e34bf0")!)
+                                    .edgesIgnoringSafeArea(.all)
                             }
                             
                             Button(action: {
@@ -75,8 +84,7 @@ struct ConfigurationView: View {
                                     Text("info@lsm.com")
                                 }
                             }
-                            
-                            NavigationLink(destination: AcercaDe()) {
+                            NavigationLink(destination: AcercaDe(config: $config)) {
                                 Text("Acerca de")
                             }
                         }
@@ -88,15 +96,15 @@ struct ConfigurationView: View {
                     )
                 }
             }
-            .navigationTitle("Ajustes")
+            .navigationTitle("Configuración")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Text("Cerrar")
+                    Text("Listo")
                         .padding(.vertical)
                         .foregroundColor(Color.accentColor)
                         .onTapGesture {
-                            self.presentationMode.wrappedValue.dismiss()
+                            config = false
                         }
                 }
             }

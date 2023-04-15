@@ -11,8 +11,6 @@ struct CustomCameraView: View {
     
     let cameraService = CameraService()
     
-    @Environment(\.presentationMode) private var presentationMode
-    
     var body: some View {
         CameraView(cameraService: cameraService)
     }

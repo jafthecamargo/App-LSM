@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import UIKit
+import SafariServices
     
 struct Info: View {
     
@@ -15,8 +15,8 @@ struct Info: View {
     
     @Binding var info: Bool
     
-    @State private var showWebView = false
-    
+    @State private var isShowingSafariView = false
+
     var body: some View {
         NavigationView {
             VStack {
@@ -25,21 +25,39 @@ struct Info: View {
             }
             .navigationTitle("Información")
             .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isShowingSafariView = true
+                    }) {
+                        Image(systemName: "globe")
+                            .padding(.vertical)
+                    }
+                    .fullScreenCover(isPresented: $isShowingSafariView) {
+                        SafariView(url: URL(string: "https://www.gob.mx/conadis/articulos/lengua-de-senas-mexicana-lsm?idiom=es")!)
+                            .edgesIgnoringSafeArea(.all)
+                    }
+                }
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Text("Cerrar")
+                    Text("Listo")
                         .padding(.vertical)
                         .foregroundColor(Color.accentColor)
                         .onTapGesture {
-                            self.presentationMode.wrappedValue.dismiss()
+                            info = false
                         }
-                }
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Link(destination: URL(string: "https://www.gob.mx/conadis/articulos/lengua-de-senas-mexicana-lsm?idiom=es")!, label: {
-                        Image(systemName: "globe")
-                            .padding(.vertical)
-                    })
                 }
             }
         }
+    }
+}
+
+struct SafariView: UIViewControllerRepresentable {
+    let url: URL
+
+    func makeUIViewController(context: Context) -> SFSafariViewController {
+        return SFSafariViewController(url: url)
+    }
+
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
+        // Implementamos el metodo obligatorio para actualizar la vista
     }
 }
