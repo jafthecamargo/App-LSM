@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var menu = true
     @State private var showText = false
     @State private var isAnimating = false
-    
+        
     var body: some View {
         ZStack {
             CustomCameraView()
@@ -35,6 +35,7 @@ struct ContentView: View {
                 .presentationDetents([.fraction(2/8)])
                 .presentationCornerRadius(20)
                 .interactiveDismissDisabled()
+                .presentationDragIndicator(Visibility.visible)
         }
     }
 }

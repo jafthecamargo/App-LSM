@@ -29,7 +29,7 @@ struct Info: View {
                     Button(action: {
                         isShowingSafariView = true
                     }) {
-                        Image(systemName: "globe")
+                        Image(systemName: "safari.fill")
                             .padding(.vertical)
                     }
                     .fullScreenCover(isPresented: $isShowingSafariView) {
@@ -38,7 +38,7 @@ struct Info: View {
                     }
                 }
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Text("Listo")
+                    Text("Cerrar")
                         .padding(.vertical)
                         .foregroundColor(Color.accentColor)
                         .onTapGesture {

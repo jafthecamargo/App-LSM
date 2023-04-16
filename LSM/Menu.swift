@@ -16,68 +16,77 @@ struct Menu: View {
     
     @State var textArray = ["hola", "como", "estás", "mi", "nombre", "m", "a", "f", "e", "r", "mucho", "gusto", "conocerte", "características"]
     @State var textIndex = 0
-    @State private var selectedColorIndex = 0
+    @State var previousTexts: [String] = []
+    
+    @State var gradient = false
+    
+    let generator = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
         VStack {
-            Spacer()
-            
-            Text(textArray[textIndex])
-                .foregroundColor(colorScheme == .dark ? Color.white.opacity(0.9) : Color.black.opacity(0.9))
-                .font(.system(size: 45, weight: .bold))
-                .opacity(0.9)
-                .padding(.horizontal, 20)
-                .padding(.top, 20)
-                .multilineTextAlignment(.center)
-                .lineSpacing(10)
-            
-            Spacer()
-                
+
+            ScrollView {
+                VStack(spacing: 30) {
+                    Spacer()
+                    ForEach(previousTexts.reversed().indices, id: \.self) { index in
+                        Text(previousTexts.reversed()[index])
+                            .foregroundColor(colorScheme == .dark ? Color.white.opacity(index == 0 ? 0.9 : 0.6) : Color.black.opacity(index == 0 ? 0.9 : 0.6))
+                            .font(.system(size: index == 0 ? 50 : 40, weight: .bold))
+                            .opacity(index == 0 ? 0.9 : 0.6)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
+            }
+            .padding(.top, 15)
+            .scrollDisabled(true)
+    
             HStack {
-                VStack {
-                    Image(systemName: "questionmark.circle")
+                ZStack(alignment: .center) {
+                    Circle()
+                        .fill(.ultraThickMaterial)
+                        .frame(width: 60, height: 60)
+                    Image(systemName: "questionmark.circle.fill")
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundColor(Color.accentColor)
-                        .onTapGesture {
-                            info = true
-                        }
-                        .sheet(isPresented: $info) {
-                            Info(info: $info)
-                                .presentationDetents([.medium])
-                                .presentationCornerRadius(20)
-                        }
                 }
-                .padding(.vertical, 15)
-                .padding(.horizontal, 15)
-                .background(.ultraThickMaterial)
-                .cornerRadius(50)
+                .onTapGesture {
+                    generator.impactOccurred()
+                    info = true
+                }
+                .sheet(isPresented: $info) {
+                    Info(info: $info)
+                        .presentationDetents([.medium])
+                        .presentationCornerRadius(20)
+                }
                 
                 Spacer()
                 
-                VStack {
+                ZStack {
+                    Circle()
+                        .fill(.ultraThickMaterial)
+                        .frame(width: 60, height: 60)
                     Image(systemName: "gear")
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .onTapGesture {
-                            config = true
-                        }
-                        .sheet(isPresented: $config) {
-                            ConfigurationView(config: $config)
-                                .presentationDetents([.large])
-                                .presentationCornerRadius(20)
-                        }
                 }
-                .padding(.vertical, 15)
-                .padding(.horizontal, 15)
-                .background(.ultraThickMaterial)
-                .cornerRadius(50)
+                .onTapGesture {
+                    generator.impactOccurred()
+                    config = true
+                }
+                .sheet(isPresented: $config) {
+                    ConfigurationView(config: $config)
+                        .presentationDetents([.large])
+                        .presentationCornerRadius(20)
+                }
             }
         }
         .padding(.horizontal, 30)
         .onAppear {
             Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { timer in
+                let previousText = self.textArray[self.textIndex]
+                self.previousTexts.append(previousText)
                 self.textIndex = (self.textIndex + 1) % self.textArray.count
             }
         }

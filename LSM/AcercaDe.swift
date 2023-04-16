@@ -15,7 +15,7 @@ struct AcercaDe: View {
     
     var body: some View {
         VStack {
-            Form {
+            List {
                 Section {
                     Image("LSM")
                         .resizable()
@@ -48,7 +48,6 @@ struct AcercaDe: View {
                             .foregroundColor(Color.accentColor)
                     }
                 }
-                .padding(.top, -10)
                 
                 Section("ALUMNO") {
                     HStack {
@@ -58,6 +57,8 @@ struct AcercaDe: View {
                             .foregroundColor(Color.accentColor)
                     }
                 }
+                .padding(.vertical, 8)
+                
                 Section("NOS AYUDAN A TRADUCIR") {
                     Text("")
                     Text("")
